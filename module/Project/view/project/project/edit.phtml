@@ -1,0 +1,31 @@
+<?php
+// module/Album/view/album/album/edit.phtml:
+
+$title = 'Edit project';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'project',
+    array(
+        'action' => 'edit',
+        'id'     => $this->id,
+    )
+));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formlabel($form->get('name'));
+echo $this->formtext($form->get('name'));
+echo $this->formlabel($form->get('description'));
+echo $this->formtextarea($form->get('description'));
+echo $this->formlabel($form->get('startdate'));
+echo $this->formdate($form->get('startdate'));
+echo $this->formlabel($form->get('enddate'));
+echo $this->formdate($form->get('enddate'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
